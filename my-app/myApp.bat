@@ -1,6 +1,7 @@
 @echo off
 :: build, deploy and run the whole project
 
+
 :: build the project
 echo. 
 echo ############################################################
