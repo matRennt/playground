@@ -11,4 +11,5 @@ node {
     sh "${mvnHome}/bin/mvn -B verify"
 }
 
+// just say bye bye 
 echo ('Bye from Pipeline');
