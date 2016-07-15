@@ -8,9 +8,11 @@ echo ('Hello from Pipeline, it is Friday noon!');
 
 node {
     //git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
+    echo ('maybe simply fetch ?');
     git url: 'git@github.com:matRennt/playground.git'
     def mvnHome = tool 'M3'
     //sh "${mvnHome}/bin/mvn -B verify"
+    echo ('run maven');
     sh "${mvnHome}/bin/mvn package"
 }
 
