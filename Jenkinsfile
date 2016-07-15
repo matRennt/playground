@@ -1,6 +1,7 @@
 /*
  * Copyright 2016 matRennt
 */
+
    
 // just say hello
 echo ('Hello from Pipeline, it is Friday today!');
