@@ -3,7 +3,7 @@
 */
    
 // just say hello
-echo ('Hello from Pipeline');
+echo ('Hello from Pipeline, today it's Friday');
 
 node {
     git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
