@@ -17,7 +17,8 @@ node {
     echo ('-----------------------------------');
 
     echo ('fetch that stuff');
-    git url: 'git@github.com:matRennt/playground.git';
+    // das sieht komisch aus, was wollte ich da ???? git url: 'git@github.com:matRennt/playground.git';
+    git url: 'https://github.com/matRennt/playground.git'
     def mvnHome = tool 'M3';
     //sh "${mvnHome}/bin/mvn -B verify"
     echo ('run maven');
