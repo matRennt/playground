@@ -14,7 +14,8 @@ node {
     echo $SHELL
     which git
     git status
-    
+    echo ('-----------------------------------');
+
     echo ('fetch that stuff');
     git url: 'git@github.com:matRennt/playground.git'
     def mvnHome = tool 'M3'
