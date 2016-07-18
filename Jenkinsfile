@@ -28,3 +28,7 @@ node {
 
 // just say bye bye 
 echo ('Bye from Pipeline');
+
+
+
+
