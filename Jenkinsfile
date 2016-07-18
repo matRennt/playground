@@ -3,32 +3,26 @@
 */
 
    
-// just say hello
 echo ('Hello from Pipeline, it is Friday today!');
-echo ('Hello from Pipeline, it is Friday noon!');
 
 node {
-    //git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
-    echo ('some git stuff');
-    id;
-    echo $SHELL;
-    which git;
-    git status;
-    echo ('-----------------------------------');
+   // Mark the code checkout 'stage'....
+   stage 'Checkout'
 
-    echo ('fetch that stuff');
-    // das sieht komisch aus, was wollte ich da ???? git url: 'git@github.com:matRennt/playground.git';
-    git url: 'https://github.com/matRennt/playground.git'
-    def mvnHome = tool 'M3';
-    //sh "${mvnHome}/bin/mvn -B verify"
-    echo ('run maven');
-    sh "${mvnHome}/bin/mvn -version";
-    sh "${mvnHome}/bin/mvn package",
+   // Get some code from a GitHub repository
+   git url: 'https://github.com/matRennt/playground.git'
+
+   // Get the maven tool.
+   // ** NOTE: This 'M3' maven tool must be configured
+   // **       in the global configuration.           
+   def mvnHome = tool 'M3'
+
+   // Mark the code build 'stage'....
+   stage 'Build'
+   // Run the maven build
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f WebApp/pom.xml clean package"
+   step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
 
 // just say bye bye 
 echo ('Bye from Pipeline');
-
-
-
-
