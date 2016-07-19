@@ -26,4 +26,4 @@ node {
 }
 
 // just say bye bye 
-echo ('Bye from Pipeline');
+echo ('Bye, bye from Pipeline');
