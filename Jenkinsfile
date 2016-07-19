@@ -10,6 +10,7 @@ node {
    stage 'Checkout'
 
    // Get some code from a GitHub repository
+   // @@mat: is that really required in our setup ???
    git url: 'https://github.com/matRennt/playground.git'
 
    // Get the maven tool.
