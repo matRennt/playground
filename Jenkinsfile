@@ -10,7 +10,7 @@ node {
    stage 'Checkout'
    def v = version()
    if (v) {
-   	echo "Building version ${v}"
+   	echo "__Building version ${v}"
    }
 
    // Get some code from a GitHub repository
@@ -36,11 +36,11 @@ node {
    sh "git status"
 
    // Run the maven build
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml package"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml package"
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
