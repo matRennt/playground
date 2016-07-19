@@ -12,6 +12,7 @@ node {
    // Get some code from a GitHub repository
    // @@mat: is that really required in our setup ???
    // git url: 'https://github.com/matRennt/playground.git'
+   checkout scm
 
    // Get the maven tool.
    // ** NOTE: This 'M3' maven tool must be configured
