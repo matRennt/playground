@@ -21,7 +21,6 @@ node {
 
    // Mark the code build 'stage'....
    stage 'Build'
-   // Run the maven build
 
    // pwd()
    // println "ls".execute().text
@@ -32,7 +31,14 @@ node {
    // print the current git status
    sh "git status"
 
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
+   // Run the maven build
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml package"
+
+   step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
 
