@@ -44,12 +44,11 @@ node {
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
 
-   def version() {
-     def matcher = readFile('my-app/pom.xml') =~ '<version>(.+)</version>'
-     matcher ? matcher[0][1] : null
-   }
-
+def version() {
+   def matcher = readFile('my-app/pom.xml') =~ '<version>(.+)</version>'
+   matcher ? matcher[0][1] : null
 }
 
 // just say bye bye 
