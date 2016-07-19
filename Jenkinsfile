@@ -32,7 +32,7 @@ node {
    // print the current git status
    sh "git status"
 
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f playground/WebApp/pom.xml clean package"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
 
