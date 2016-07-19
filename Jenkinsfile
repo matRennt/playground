@@ -3,7 +3,7 @@
 */
 
    
-echo ('Hello from Pipeline, it is Friday today!');
+echo ('Hello from Pipeline, it is Tuesday today!');
 
 node {
    // Mark the code checkout 'stage'....
