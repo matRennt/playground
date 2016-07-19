@@ -8,7 +8,7 @@ echo ('Hello from Pipeline, it is Tuesday today!');
 node {
    // Mark the code checkout 'stage'....
    stage 'Checkout'
-   def v = version
+   def v = version()
    if (v) {
    	echo "Building version ${v}"
    }
