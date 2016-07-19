@@ -24,7 +24,12 @@ node {
 
    // pwd()
    // println "ls".execute().text
+
+   // print working directory and it's content
    sh "pwd; ls"
+
+   // print the current git status
+   sh "git status"
 
    sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f playground/WebApp/pom.xml clean package"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
