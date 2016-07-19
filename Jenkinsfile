@@ -23,6 +23,8 @@ node {
    // Run the maven build
 
    //pwd()
+   println "ls".execute().text
+   sh "pwd; ls"
 
    sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f playground/WebApp/pom.xml clean package"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
