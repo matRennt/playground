@@ -8,9 +8,13 @@ echo ('Hello from Pipeline, it is Tuesday today!');
 node {
    // Mark the code checkout 'stage'....
    stage 'Checkout'
+   def v = version()
+   if (v) {
+   	echo "__Building version ${v}"
+   }
 
    // Get some code from a GitHub repository
-   // @@mat: is that really required in our setup ???
+   // @@mat: is the next line really required in our setup ???
    // git url: 'https://github.com/matRennt/playground.git'
    checkout scm
 
@@ -32,14 +36,19 @@ node {
    sh "git status"
 
    // Run the maven build
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
-   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml package"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
+   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml package"
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+
+def version() {
+   def matcher = readFile('my-app/pom.xml') =~ '<version>(.+)</version>'
+   matcher ? matcher[0][1] : null
 }
 
 // just say bye bye 
