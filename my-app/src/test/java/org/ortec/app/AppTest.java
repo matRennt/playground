@@ -7,8 +7,8 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
+        extends TestCase
 {
     /**
      * Create the test case
@@ -28,11 +28,21 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
+    protected int randomNum;
+
+    // assigning the values
+    protected void setUp(){
+        randomNum=(int)(Math.random() * 10);
+    }
+
     /**
      * Rigourous Test :-)
      */
     public void testApp()
     {
-        assertTrue( true );
+        //assertTrue( true );
+        System.out.println("randomNum = " + randomNum);
+        assertTrue(randomNum < 5);
     }
+
 }
