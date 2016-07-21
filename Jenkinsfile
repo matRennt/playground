@@ -36,7 +36,7 @@ node {
    sh "git status"
 
    // Run the maven build
-   //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
+   sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml clean package"
    //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml verify"
    //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml compile"
    //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore -f my-app/pom.xml test"
