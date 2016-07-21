@@ -28,21 +28,34 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    protected int randomNum;
+    App app = new App();
+    int value1;
+    int value2;
+    int sum;
+
 
     // assigning the values
     protected void setUp(){
-        randomNum=(int)(Math.random() * 10);
+        value1=(int)(Math.random() * 10);
+        value2=(int)(Math.random() * 10);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testAppSuccess()
     {
         //assertTrue( true );
-        System.out.println("randomNum = " + randomNum);
-        assertTrue(randomNum < 5);
+        sum = app.additionSuccess(value1, value2);
+        System.out.println("testAppSuccess: " + value1 + "+" + value2 + "=" + sum);
+        assertTrue(sum == (value1+value2));
     }
 
+
+    public void testAppFailed()
+    {
+        sum = app.additionFailed(value1, value2);
+        System.out.println("testAppFailed: " + value1 + "+" + value2 + "=" + sum);
+        assertTrue(sum == (value1+value2));
+    }
 }
