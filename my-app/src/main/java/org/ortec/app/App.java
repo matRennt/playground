@@ -10,9 +10,11 @@ public class App
 {
     public App( ) {}
 
-    //public int getRandomNumber() {
+    /*
+    public int getRandomNumber() {
         return (int)(Math.random() * 10);
     }
+    */
 
     public int additionSuccess(int value1, int value2) {
 
