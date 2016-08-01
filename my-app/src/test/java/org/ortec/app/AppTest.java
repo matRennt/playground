@@ -78,4 +78,9 @@ public class AppTest
         assertTrue( false);
     }
 
+    @Test
+    public void evaluatesExpression() {
+        assertEquals(6, sum);
+    }
+
 }
