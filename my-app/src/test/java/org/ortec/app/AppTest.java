@@ -52,10 +52,17 @@ public class AppTest
     }
 
 
-    public void testAppFailed()
-    {
+    public void testAppFailed() {
         sum = app.additionFailed(value1, value2);
         System.out.println("testAppFailed: " + value1 + "+" + value2 + "=" + sum);
-        assertTrue(sum == (value1+value2));
+        assertTrue(sum == (value1 + value2));
     }
+
+    public void testAppDrei() {
+        sum = app.additionFailed(value1, value2);
+        System.out.println("testApp333: " + value1 + "+" + value2 + "=" + sum);
+        assertTrue(sum == (value1+value2));
+        assertTrue( false);
+    }
+
 }
