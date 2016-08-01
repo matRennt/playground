@@ -7,8 +7,8 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
+        extends TestCase
 {
     /**
      * Create the test case
@@ -28,19 +28,33 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    App app = new App();
+    int value1;
+    int value2;
+    int sum;
+
+
+    // assigning the values
+    protected void setUp(){
+        value1=(int)(Math.random() * 10);
+        value2=(int)(Math.random() * 10);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp2()
+    public void testAppSuccess()
     {
-        assertTrue( false );
+        //assertTrue( true );
+        sum = app.additionSuccess(value1, value2);
+        System.out.println("testAppSuccess: " + value1 + "+" + value2 + "=" + sum);
+        assertTrue(sum == (value1+value2));
     }
-}
+
+
+    public void testAppFailed()
+    {
+        sum = app.additionFailed(value1, value2);
+        System.out.println("testAppFailed: " + value1 + "+" + value2 + "=" + sum);
+        assertTrue(sum == (value1+value2));
+    }

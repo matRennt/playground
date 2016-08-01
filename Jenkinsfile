@@ -3,15 +3,15 @@
 */
 
    
-echo ('Hello from Pipeline, it is Tuesday today!');
+echo ('Hello from Pipeline, it is Thursday today!');
 
 node {
    // Mark the code checkout 'stage'....
    stage 'Checkout'
-   def v = version()
-   if (v) {
-   	echo "__Building version ${v}"
-   }
+  // def v = version()
+  // if (v) {
+  // 	echo "__Building version ${v}"
+   //}
 
    // Get some code from a GitHub repository
    // @@mat: is the next line really required in our setup ???
