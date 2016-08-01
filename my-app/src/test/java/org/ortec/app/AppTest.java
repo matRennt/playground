@@ -58,3 +58,4 @@ public class AppTest
         System.out.println("testAppFailed: " + value1 + "+" + value2 + "=" + sum);
         assertTrue(sum == (value1+value2));
     }
+}
