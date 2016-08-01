@@ -10,7 +10,7 @@ public class App
 {
     public App( ) {}
 
-    public int getRandomNumber() {
+    //public int getRandomNumber() {
         return (int)(Math.random() * 10);
     }
 
