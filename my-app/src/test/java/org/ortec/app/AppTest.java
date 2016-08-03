@@ -72,7 +72,7 @@ public class AppTest
         assertTrue( false);
     }
 
-    public void testApp5() {
+    public void testHallo() {
         sum = app.additionFailed(value1, value2);
         System.out.println("testApp333: " + value1 + "+" + value2 + "=" + sum);
         assertTrue( true);
