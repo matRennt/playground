@@ -66,12 +66,6 @@ public class AppTest
     assertTrue( false);
     }
 
-    public void testApppVier() {
-        sum = app.additionFailed(value1, value2);
-        System.out.println("testApp444: " + value1 + "+" + value2 + "=" + sum);
-        assertTrue(sum == (value1+value2));
-        assertTrue( false);
-    }
 
     public void testHallo() {
         sum = app.additionFailed(value1, value2);
