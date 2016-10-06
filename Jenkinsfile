@@ -39,11 +39,11 @@ node {
    sh "${mvnHome}/bin/mvn -f my-app/pom.xml clean test"
    
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   def stdout = sh(script: "${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: false)
+   def stdout = sh(script: "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: false)
    println stdout
 
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   def returnStatus = sh(script: "${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: true)
+   def returnStatus = sh(script: "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: true)
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
