@@ -41,14 +41,15 @@ node {
    //sh "${mvnHome}/bin/mvn -f my-app/pom.xml -Dmaven.test.failure.ignore clean test"
    
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   def stdout = sh(script: "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: false)
+   def stdout = sh(script: "${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: true)
    println stdout
+   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
-   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   def returnStatus = sh(script: "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: true)
-   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   println returnStatus
-   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+//   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+//   def returnStatus = sh(script: "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test", returnStatus: true)
+//   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+//   println returnStatus
+//   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
