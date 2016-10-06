@@ -38,11 +38,11 @@ node {
    // Run the maven build
    sh "${mvnHome}/bin/mvn -f my-app/pom.xml clean test"
    
-   println >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
    def stdout = sh(script: 'sh ./tools/stopHTTPServer.sh', returnStdout: true)
    println stdout
 
-   println >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
    def return = sh(script: 'sh ./tools/stopHTTPServer.sh', returnStatus: true)
    println return
 
