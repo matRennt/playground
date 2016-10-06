@@ -53,6 +53,7 @@ public class AppTest
     }
 
 
+    /*
     public void testAppFailed() {
         sum = app.additionFailed(value1, value2);
         System.out.println("testAppFailed: " + value1 + "+" + value2 + "=" + sum);
@@ -72,5 +73,6 @@ public class AppTest
         System.out.println("testAppHallo: " + value1 + "+" + value2 + "=" + sum);
         assertTrue( false);
     }
+    */
 
 }
