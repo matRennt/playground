@@ -42,9 +42,9 @@ node {
    def stdout = sh(script: 'sh ./tools/stopHTTPServer.sh', returnStdout: true)
    println stdout
 
-   //println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   //def return = sh(script: 'sh ./tools/stopHTTPServer.sh', returnStatus: true)
-   //println return
+   println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+   def returnStatus = sh(script: 'sh ./tools/stopHTTPServer.sh', returnStatus: true)
+   println returnStatus
 
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
