@@ -55,6 +55,7 @@ node {
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 
    }
+}
 
 
 catch (exc) {
