@@ -46,14 +46,12 @@ node {
 
   def branch_name = env.BRANCH_NAME
   def branch_tag = branch_name.toLowerCase().replaceAll( '/', '-' )
-
-
   echo "BRANCH_NAME: ${env.BRANCH_NAME}"
   echo "BRANCH_TAG: ${branch_tag}"
 
    if ( returnStatus.equals(0)) {
       println ">>> MERGE <<<"
-      sh "sh ./tools/automaticMerge.sh"
+      sh "sh ./tools/automaticMerge.sh ${env.BRANCH_NAME}"
     } 
     else {
       sendMail()
