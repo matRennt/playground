@@ -38,7 +38,7 @@ LAST_COMMIT=$(git rev-list -1 HEAD)
 echo Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integration
 
 case $CURRENT_BRANCH in
-story.*)
+story*)
   echo ">>> merge $CURRENT_BRANCH"
   git checkout integration ＆＆ git merge $CURRENT_BRANCH
   git push
