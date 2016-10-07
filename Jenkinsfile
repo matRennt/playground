@@ -42,7 +42,7 @@ node {
    
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
    sh "set +e; ${mvnHome}/bin/mvn -f my-app/pom.xml clean test; echo \$? > _returnStatus"
-   def returnStatus = readFile('_returnStatus').trim()
+   int returnStatus = readFile('_returnStatus').trim(),toInteger()
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
