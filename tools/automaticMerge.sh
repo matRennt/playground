@@ -43,7 +43,8 @@ story*)
   set -x
   which git
   git status
-  git checkout integration ＆＆ git merge $CURRENT_BRANCH
+  git checkout integration || exit 1
+  git merge $CURRENT_BRANCH
   git push
   ;;
 esac
