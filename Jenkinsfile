@@ -46,10 +46,10 @@ node {
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
-   if ( returnStatus == 0) {
+   if ( returnStatus.equals(0) {
       println ">>> true"
     } else {
-      println ">>> fasle"
+      println ">>> false"
     }
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
