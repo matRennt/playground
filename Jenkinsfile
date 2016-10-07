@@ -51,7 +51,7 @@ node {
 
    if ( returnStatus.equals(0)) {
       println ">>> MERGE <<<"
-      sh "sh ./tools/automaticMerge.sh ${env.BRANCH_NAME}"
+      sh "sh ./tools/automaticMerge.sh --branch=${env.BRANCH_NAME}"
     } 
     else {
       sendMail()
