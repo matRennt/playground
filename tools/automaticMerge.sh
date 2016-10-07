@@ -2,7 +2,7 @@
 # Automatically merge the current story branch through the following branches:
 # integration (-> master)
 
-//CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+#CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 URRENT_BRANCH=$1
 LAST_COMMIT=$(git rev-list -1 HEAD)
 
