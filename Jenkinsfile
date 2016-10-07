@@ -46,7 +46,7 @@ node {
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
-   if ( returnStatus ) {
+   if ( returnStatus == 0) {
       println ">>> true"
     } else {
       println ">>> fasle"
