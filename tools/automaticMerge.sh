@@ -67,6 +67,12 @@ story*)
 
   echo "--- $_script: run"
 
+  echo "--- $_script: git branch -a"
+  $_git branch -a || exit 1
+
+  echo "--- $_script: git pull"
+  $_git pull || exit 1  
+
   echo "--- $_script: git checkout integration"
   $_git checkout integration || exit 1
 
@@ -78,7 +84,7 @@ story*)
 
   echo "--- $_script: git push"
   $_git push
-  
+
   echo "--- $_script: fertig"
 
   ;;
