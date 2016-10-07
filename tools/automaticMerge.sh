@@ -46,8 +46,10 @@ story*)
   git config --list
   git status
 
-  git config --global user.email "sw-managment-build@ortec.org"
-  git config --global user.name "sw-managment-build"
+  #git config --global user.email "sw-managment-build@ortec.org"
+  #git config --global user.name "sw-managment-build"
+  git config --global user.email "griese@ortec.org"
+  git config --global user.name "Matthias Griese"
 
   git checkout integration || exit 1
   git merge $CURRENT_BRANCH
