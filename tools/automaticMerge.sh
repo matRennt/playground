@@ -47,8 +47,12 @@ story*)
   echo "--- $_script: prepare"
 
   which $_git
+
+  echo "--- $_script: git --version"
   $_git --version
+  echo "--- $_script: git config --list"
   $_git config --list
+  echo "--- $_script: git status"
   $_git status
 
   #$_git config --global user.email "sw-managment-build@ortec.org"
@@ -67,10 +71,15 @@ story*)
 
   echo "--- $_script: run"
 
-  #echo "--- $_script: git branch -a"
-  #$_git branch -a || exit 1
-  #echo "--- $_script: git pull"
-  #$_git pull || exit 1  
+
+  echo "--- $_script: git checkout $CURRENT_BRANCH"
+  $_git checkout $CURRENT_BRANCH || exit 1  
+
+  echo "--- $_script: git branch -a"
+  $_git branch -a || exit 1
+
+  echo "--- $_script: git pull"
+  $_git pull || exit 1  
 
   echo "--- $_script: git checkout integration"
   $_git checkout integration || exit 1
