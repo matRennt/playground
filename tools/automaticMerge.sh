@@ -42,7 +42,13 @@ story*)
   echo ">>> merge $CURRENT_BRANCH"
   set -x
   which git
+  git --version
+  git config --list
   git status
+
+  git config --global user.email "sw-managment-build@ortec.org"
+  git config --global user.name "sw-managment-build"
+
   git checkout integration || exit 1
   git merge $CURRENT_BRANCH
   git push
