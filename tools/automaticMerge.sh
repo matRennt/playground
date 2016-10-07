@@ -39,7 +39,11 @@ echo Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integrati
 
 case $CURRENT_BRANCH in
 story*)
-  echo ">>> merge $CURRENT_BRANCH"
+  echo "################################################"
+  echo "# merge $CURRENT_BRANCH"
+  echo "#"
+
+  echo ">>> prepare"
   set -x
   which git
   git --version
@@ -51,6 +55,8 @@ story*)
   git config --global user.email "griese@ortec.org"
   git config --global user.name "Matthias Griese"
 
+  echo ">>> run"
+  git pull
   git checkout integration || exit 1
   git merge $CURRENT_BRANCH
   git push
