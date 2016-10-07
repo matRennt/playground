@@ -55,6 +55,13 @@ story*)
   git config --global user.email "griese@ortec.org"
   git config --global user.name "Matthias Griese"
 
+  gitURL_HTTPS=`git remote -v | nawk '{ print $2}' | head -1`
+  gitURL=`echo $ gitURL_HTTPS | sed "s|github.com/|github.com:|" | sed "s|https://|git@|"`
+  echo "gitURL_HTTPS: $gitURL_HTTPS"
+  echo "gitURL      : $gitURL"
+
+
+
   echo ">>> run"
   git pull
   git checkout integration || exit 1
