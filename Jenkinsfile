@@ -46,7 +46,7 @@ node {
 
    if ( returnStatus.equals(0)) {
       println ">>> MERGE <<<"
-      sh "./tools/automaticMerge.sh"
+      sh "sh ./tools/automaticMerge.sh"
     } 
     else {
       sendMail()
