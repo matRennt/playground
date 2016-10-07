@@ -8,12 +8,12 @@ echo ('Hello from Pipeline, it is Thursday today!');
 try {
 
 node {
-   // Mark the code checkout 'stage'....
-   stage 'Checkout'
+  // Mark the code checkout 'stage'....
+  stage 'Checkout'
   // def v = version()
   // if (v) {
   // 	echo "__Building version ${v}"
-   //}
+  //}
 
    // Get some code from a GitHub repository
    // @@mat: is the next line really required in our setup ???
@@ -47,7 +47,10 @@ node {
    if ( returnStatus.equals(0)) {
       println ">>> MERGE <<<"
       sh "./tools/automaticMerge.sh"
-   } 
+    } 
+    else {
+      sendMail()
+    }
 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
