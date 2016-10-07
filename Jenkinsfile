@@ -41,7 +41,7 @@ node {
    //sh "${mvnHome}/bin/mvn -f my-app/pom.xml -Dmaven.test.failure.ignore clean test"
    
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-   sh(script: "echo aaa; false; echo $? > _returnStatus")
+   sh 'echo aaa; false; echo $? > _returnStatus'
    def returnStatus = readFile('_returnStatus').trim()
    println returnStatus
 
