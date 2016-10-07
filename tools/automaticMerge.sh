@@ -55,6 +55,7 @@ story*)
   echo "--- $_script: git status"
   $_git status
 
+  # @@mat: needs to be changed after sw-management-build has the right permissions @github 
   #$_git config --global user.email "sw-managment-build@ortec.org"
   #$_git config --global user.name "sw-managment-build"
   $_git config --global user.email "griese@ortec.org"
