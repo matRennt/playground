@@ -18,6 +18,7 @@ node {
    // Get some code from a GitHub repository
    // @@mat: is the next line really required in our setup ???
    // git url: 'https://github.com/matRennt/playground.git'
+   sh 'git clean -ffdx'
    checkout scm
 
    // Get the maven tool.
