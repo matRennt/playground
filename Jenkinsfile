@@ -46,7 +46,7 @@ node {
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
-   if ( returnStatus.equals(0) {
+   if ( returnStatus.equals(0)) {
       println ">>> true"
     } else {
       println ">>> false"
