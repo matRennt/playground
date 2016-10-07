@@ -2,8 +2,7 @@
 # Automatically merge the current story branch through the following branches:
 # integration (-> master)
 
-function usage()
-{
+usage() {
     echo "Automatically merge the current story branch into integration"
     echo ""
     echo "`basename $0`"
