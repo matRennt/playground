@@ -44,7 +44,6 @@ story*)
   echo "#"
 
   echo ">>> prepare"
-  set -x
   which git
   git --version
   git config --list
@@ -57,8 +56,8 @@ story*)
 
   gitURL_HTTPS=`git remote -v | nawk '{ print $2}' | head -1`
   gitURL=`echo $ gitURL_HTTPS | sed "s|github.com/|github.com:|" | sed "s|https://|git@|"`
-  echo "gitURL_HTTPS: $gitURL_HTTPS"
-  echo "gitURL      : $gitURL"
+  echo "gitURL_HTTPS: ${gitURL_HTTPS}"
+  echo "gitURL      : ${gitURL}"
 
 
 
