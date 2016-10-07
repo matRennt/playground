@@ -63,9 +63,13 @@ story*)
 
 
   echo ">>> run"
-  git pull
   git checkout integration || exit 1
-  git merge $CURRENT_BRANCH
+  git pull || exit 1
+  git merge $CURRENT_BRANCH || exit 1
   git push
+  echo ">>> fertig"
+  false || exit 1
+  echo ">>> wirklich fertig"
+
   ;;
 esac
