@@ -92,7 +92,7 @@ story*)
   $_git merge $CURRENT_BRANCH || exit 1
 
   echo "--- $_script: git push"
-  $_git push
+  $_git push || exit 1
 
   echo "--- $_script: fertig"
 
