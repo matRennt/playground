@@ -46,12 +46,17 @@ node {
    println returnStatus
    println ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
+   if ( returnStatus ) {
+      println ">>> true"
+    } else {
+      println ">>> fasle"
+    }
+
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerpront: true])
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 
    }
 }
-
 
 catch (exc) {
     echo "Caught: ${exc}"
