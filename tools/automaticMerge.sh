@@ -40,6 +40,8 @@ echo Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integrati
 case $CURRENT_BRANCH in
 story*)
   echo ">>> merge $CURRENT_BRANCH"
+  which git
+  git status
   git checkout integration ＆＆ git merge $CURRENT_BRANCH
   git push
   ;;
