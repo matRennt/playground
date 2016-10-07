@@ -2,6 +2,9 @@
 # Automatically merge the current story branch through the following branches:
 # integration (-> master)
 
+_script=`basename $0`
+_git="/opt/bitnami/git/bin/git"
+
 usage() {
     echo "Automatically merge the current story branch into integration"
     echo ""
@@ -31,20 +34,66 @@ while [ "$1" != "" ]; do
     shift
 done
 
-#CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+#CURRENT_BRANCH=$($_git rev-parse --abbrev-ref HEAD)
 CURRENT_BRANCH=$BRANCH
-LAST_COMMIT=$(git rev-list -1 HEAD)
+LAST_COMMIT=`$_git rev-list -1 HEAD`
 
-echo Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integration
+echo "--- $_script: Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integration"
 
 case $CURRENT_BRANCH in
 story*)
-  echo ">>> merge $CURRENT_BRANCH"
-  set -x
-  which git
-  git status
-  git checkout integration || exit 1
-  git merge $CURRENT_BRANCH
-  git push
+  echo "--- $_script: merge $CURRENT_BRANCH"
+
+  echo "--- $_script: prepare"
+
+  which $_git
+
+  echo "--- $_script: git --version"
+  $_git --version
+  echo "--- $_script: git config --list"
+  $_git config --list
+  echo "--- $_script: git status"
+  $_git status
+
+  #$_git config --global user.email "sw-managment-build@ortec.org"
+  #$_git config --global user.name "sw-managment-build"
+  $_git config --global user.email "griese@ortec.org"
+  $_git config --global user.name "matRennt"
+
+  gitURL_HTTPS=`$_git remote -v | nawk '{ print $2}' | head -1`
+  gitURL=`echo $gitURL_HTTPS | sed "s|github.com/|github.com:|" | sed "s|https://|git@|"`
+  echo "gitURL_HTTPS: ${gitURL_HTTPS}"
+  echo "gitURL      : ${gitURL}"
+
+  echo "--- $_script: git remote set-url origin ${gitURL}"
+  $_git remote set-url origin ${gitURL}
+
+
+  echo "--- $_script: run"
+
+
+  echo "--- $_script: git checkout $CURRENT_BRANCH"
+  $_git checkout $CURRENT_BRANCH || exit 1  
+
+  echo "--- $_script: git branch -a"
+  $_git branch -a || exit 1
+
+  echo "--- $_script: git pull"
+  $_git pull || exit 1  
+
+  echo "--- $_script: git checkout integration"
+  $_git checkout integration || exit 1
+
+  echo "--- $_script: git pull"
+  $_git pull || exit 1
+
+  echo "--- $_script: git merge $CURRENT_BRANCH"
+  $_git merge $CURRENT_BRANCH || exit 1
+
+  echo "--- $_script: git push"
+  $_git push
+
+  echo "--- $_script: fertig"
+
   ;;
 esac
