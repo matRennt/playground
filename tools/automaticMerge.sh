@@ -53,7 +53,7 @@ story*)
   #git config --global user.email "sw-managment-build@ortec.org"
   #git config --global user.name "sw-managment-build"
   git config --global user.email "griese@ortec.org"
-  git config --global user.name "Matthias Griese"
+  git config --global user.name "matRennt"
 
   gitURL_HTTPS=`git remote -v | nawk '{ print $2}' | head -1`
   gitURL=`echo $ gitURL_HTTPS | sed "s|github.com/|github.com:|" | sed "s|https://|git@|"`
