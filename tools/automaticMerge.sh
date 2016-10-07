@@ -2,6 +2,8 @@
 # Automatically merge the current story branch through the following branches:
 # integration (-> master)
 
+_script=`basename $0`
+
 usage() {
     echo "Automatically merge the current story branch into integration"
     echo ""
@@ -39,11 +41,12 @@ echo Automatically merging commit $LAST_COMMIT from $CURRENT_BRANCH to integrati
 
 case $CURRENT_BRANCH in
 story*)
-  echo "################################################"
-  echo "# merge $CURRENT_BRANCH"
-  echo "#"
+  echo "--- $_script: ################################################"
+  echo "--- $_script: # merge $CURRENT_BRANCH"
+  echo "--- $_script: #"
 
-  echo ">>> prepare"
+  echo "--- $_script: prepare"
+
   which git
   git --version
   git config --list
@@ -59,14 +62,16 @@ story*)
   echo "gitURL_HTTPS: ${gitURL_HTTPS}"
   echo "gitURL      : ${gitURL}"
 
+  echo "--- $_script: git remote set-url origin ${gitURL}"
+  git remote set-url origin ${gitURL}
 
 
-  echo ">>> run"
+  echo "--- $_script: run"
   git checkout integration || exit 1
   git pull || exit 1
   git merge $CURRENT_BRANCH || exit 1
   git push
-  echo ">>> fertig"
+  echo "--- $_script: fertig"
 
   ;;
 esac
